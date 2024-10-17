@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ToDoMVCExample.Views.ToDoView"
+             Title="ToDoView">
+    <ScrollView>
+        <CollectionView x:Name="collToDoItems" >
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" 
+                                 Span="2" VerticalItemSpacing="20" HorizontalItemSpacing="30"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <!--Specify the look of a single item in the collection.-->
+                <DataTemplate>
+                    <Grid Margin="20" Padding="10" RowDefinitions="150, 30, 30, 60" 
+                          ColumnDefinitions="250" BackgroundColor="#444444" WidthRequest="270">
+                        <Border BackgroundColor="{Binding ColorBackDrop}">
+                            <VerticalStackLayout>
+                                <CheckBox IsChecked="{Binding IsCompleted, Mode=TwoWay}"/>
+                                <Label Text="{Binding Detail}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="20"/>    
+                            </VerticalStackLayout>
+                            
+                        </Border>
+                        <Label Text="{Binding AssignedTo}" FontAttributes="Italic" Margin="10, 0" Grid.Row="1" FontSize="18"/>
+                        <Label Text="{Binding DateAssigned}" FontAttributes="Italic" Margin="35, 0"  Grid.Row="2"/>
+                        <Label Text="{Binding DateCompleted}" Grid.Row="3" HorizontalOptions="End" VerticalOptions="End"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </ScrollView>
+</ContentPage>
